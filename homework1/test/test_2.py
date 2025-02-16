@@ -3,7 +3,7 @@
 # CS4300.001
 # 02/18/2025
 
-from ..task_2 import *
+from ..task2 import *
 
 import pytest
 
