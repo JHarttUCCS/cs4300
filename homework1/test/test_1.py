@@ -8,7 +8,7 @@ from ..task_1 import *
 import pytest
 
 
-def test_1(capsys):
+def test_hello_world(capsys):
     hello_world()
     captured = capsys.readouterr()
     assert captured.out == "Hello, World!\n"
