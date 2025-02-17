@@ -24,16 +24,17 @@ def print_ten_primes():
         primeReached = False
         while not primeReached:
             primeReached = True
-            # Test if the current number is divisible by a previous prime. 
+            # Test if the current number is divisible by any previous prime. 
             # If so, it is not a new prime.
             for prime in primes:
                 if currNum % prime == 0:
                     primeReached = False
+                    break
 
-            # move to the next number
+            # move to the next number, EVEN IF THE PRIME IS FOUND
             currNum += 1
 
-        primes.append(currNum-1) # -1 accounts for extra cycle at the end of the while loop
+        primes.append(currNum-1) # -1 accounts for extra cycle at the end of the while loop when the prime is found
 
     # print the list without the brackets and a ', ' seperator
     print(*primes, sep=', ')
