@@ -11,4 +11,4 @@ from . import task3
 from . import task4
 from . import task5
 from . import task6
-# from . import task7
+from . import task7
