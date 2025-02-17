@@ -10,6 +10,6 @@ from . import test_2
 from . import test_3
 from . import test_4
 from . import test_5
-# from . import test_6
+from . import test_6
 # from . import test_7
  
