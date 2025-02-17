@@ -8,6 +8,7 @@ from ..task1 import *
 import pytest
 
 
+# Use capsys to capture the termina output and test it.
 def test_hello_world(capsys):
     hello_world()
     captured = capsys.readouterr()

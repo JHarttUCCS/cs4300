@@ -11,6 +11,7 @@ favBookList = [
     "Ender's Game by Orson Scott Card"
 ]
 
+# print the first 3 books using list splicing
 def print_first_3_books():
     for book in favBookList[:3]:
         print(book)

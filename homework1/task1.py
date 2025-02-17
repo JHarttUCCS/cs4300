@@ -3,6 +3,7 @@
 # CS4300.001
 # 02/18/2025
 
+# prints hello world
 def hello_world():
     print("Hello, World!")
 

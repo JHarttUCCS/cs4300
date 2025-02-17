@@ -6,7 +6,7 @@
 # import os.path
 
 
+# Count the words using the split() function
 def count_words(filepath):
-    f = open(filepath, 'r')
-
-    return len(f.read().split())
+    with open(filepath, 'r') as f:
+        return len(f.read().split())

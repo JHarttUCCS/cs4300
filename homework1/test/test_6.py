@@ -11,6 +11,7 @@ import pytest
 testDir = os.path.join('..', 'res')
 
 
+# the basic run test function that actually tests each call of the function
 def run_test_word_count(filepath):
     with open(filepath, 'r') as f:
         words = len(f.read().split())
@@ -23,6 +24,7 @@ def run_test_word_count(filepath):
 # inspired by but not copied from a ChatGPT response: https://chatgpt.com/share/67b28092-c43c-8006-a8ac-f5200ad55613
 for fileName in os.listdir(testDir):
     if fileName.endswith('.txt'):
+        # declare file names and paths for convenience
         testName = f"test_count_words_{os.path.splitext(fileName)[0]}"
         filepath = os.path.join(testDir, fileName)
 

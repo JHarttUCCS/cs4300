@@ -24,19 +24,24 @@ def print_ten_primes():
         primeReached = False
         while not primeReached:
             primeReached = True
+            # Test if the current number is divisible by a previous prime. 
+            # If so, it is not a new prime.
             for prime in primes:
                 if currNum % prime == 0:
                     primeReached = False
 
+            # move to the next number
             currNum += 1
 
         primes.append(currNum-1) # -1 accounts for extra cycle at the end of the while loop
 
+    # print the list without the brackets and a ', ' seperator
     print(*primes, sep=', ')
 
 # print_ten_primes()
 
 
+# calculate a running sum
 def sum(start, end):
     currNum = start
     total = 0
