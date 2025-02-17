@@ -5,6 +5,7 @@
 
 from ..task7 import *
 
+import numpy as np
 import pytest
 
 
