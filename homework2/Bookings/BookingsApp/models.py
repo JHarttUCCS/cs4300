@@ -18,12 +18,12 @@ class Seat(models.Model):
     # status
     FREE = 0
     RESERVED = 1
-    STATUS_CHOICES = {
-        FREE: "Free",
-        RESERVED: "Reserved",
-    }
-    year_in_school = models.SmallIntegerField(
-        choices=YEAR_IN_SCHOOL_CHOICES,
+    STATUS_CHOICES = [
+        (FREE, "Free"),
+        (RESERVED, "Reserved"),
+    ]
+    status = models.SmallIntegerField(
+        choices=STATUS_CHOICES,
         default=FREE,
     )
 
@@ -34,7 +34,7 @@ class Seat(models.Model):
 class Booking(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     booking_date = models.DateTimeField()
 
     def __str__(self):
