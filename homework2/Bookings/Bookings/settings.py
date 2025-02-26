@@ -24,8 +24,14 @@ SECRET_KEY = 'django-insecure-mosz5z^g9#8kdg8!ewp)k75-0^uxmeza8+3n#ap9(4aoc31!!e
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'app-jhartttesting-5.devedu.io',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://app-jhartttesting-5.devedu.io',
+]
 
 
 # Application definition

@@ -10,5 +10,5 @@ from .serializers import MovieSerializer
 # ==== Viewsets ====
 class MovieViewSet(viewsets.ModelViewSet):
     queryset = Movie.objects.all()
-    serializer = MovieSerializer
+    serializer_class = MovieSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
