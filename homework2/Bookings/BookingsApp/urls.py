@@ -7,6 +7,7 @@ from . import views
 # create router and register the viewsets
 router = routers.DefaultRouter()
 router.register(r'movies', views.MovieViewSet, basename='movie')
+router.register(r'seats', views.SeatViewSet, basename='seat')
 
 
 urlpatterns = [
