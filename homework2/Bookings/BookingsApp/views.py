@@ -5,6 +5,7 @@ from rest_framework import permissions
 
 from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
+from .forms import *
 from .views import *
 
 # Create your views here.
@@ -32,6 +33,24 @@ def custom_logout(request):
 
 def profile_redirect(request):
     return redirect('/movie_list')
+
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+
+            # print(str(form.cleaned_data))
+
+            return redirect("login")
+
+    context = {}
+    context['form'] = form
+
+    return render(request, 'registration/register.html', context)
 
 
 # page views
