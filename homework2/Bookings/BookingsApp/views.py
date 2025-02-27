@@ -64,17 +64,18 @@ def movieList(request):
 
     return render(request, 'BookingsApp/movie_list.html', context)
 
-def bookingHistory(request):
-    context = {}
+class BookingHistoryView(LoginRequiredMixin, View):
+    def get(self, request):
+        context = {}
 
-    if request.user.is_authenticated:
-        bookings = Booking.objects.filter(user=request.user)
-    else:
-        bookings = Booking.objects.none()
+        if request.user.is_authenticated:
+            bookings = Booking.objects.filter(user=request.user)
+        else:
+            bookings = Booking.objects.none()
 
-    context['bookings'] = bookings
+        context['bookings'] = bookings
 
-    return render(request, 'BookingsApp/booking_history.html', context)
+        return render(request, 'BookingsApp/booking_history.html', context)
 
 class SeatBookingView(LoginRequiredMixin, View):
     def get(self, request):
