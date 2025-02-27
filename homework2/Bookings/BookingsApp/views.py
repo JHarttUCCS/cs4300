@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from django.shortcuts import render
 from rest_framework import viewsets
 from rest_framework import permissions
@@ -24,6 +25,12 @@ class BookingViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
 
 
+# accounts
+def custom_logout(request):
+    logout(request)
+    return render(request, 'registration/logout.html')
+
+
 # page views
 def movieList(request):
     context = {}
@@ -36,7 +43,11 @@ def movieList(request):
 def bookingHistory(request):
     context = {}
 
-    bookings = Booking.objects.filter(user=request.user)
+    if request.user.is_authenticated:
+        bookings = Booking.objects.filter(user=request.user)
+    else:
+        bookings = Booking.objects.none()
+
     context['bookings'] = bookings
 
     return render(request, 'BookingsApp/booking_history.html', context)

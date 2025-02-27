@@ -14,6 +14,10 @@ router.register(r'bookings', views.BookingViewSet, basename='booking')
 urlpatterns = [
     # api urls
     path('api/', include(router.urls)),
+
+    # auth urls
+    path('accounts/logout/', views.custom_logout, name='logoutView'),
+    path('accounts/', include('django.contrib.auth.urls')),
     
     # page urls
     path('movie_list', views.movieList, name='movie_list'),
