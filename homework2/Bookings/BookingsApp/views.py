@@ -99,3 +99,27 @@ class SeatBookingView(LoginRequiredMixin, View):
         
         context = {'form': form}
         return render(request, 'BookingsApp/seat_booking.html', context)
+
+
+class SeatBookingViewID(LoginRequiredMixin, View):
+    def get(self, request, movie_id):
+        form = BookingForm(initial={'movie': movie_id})
+        context = {'form': form}
+        return render(request, 'BookingsApp/seat_booking.html', context)
+
+    def post(self, request):
+        form = BookingForm(request.POST)
+
+        print(form.errors)
+        if form.is_valid():
+            print("hi")
+
+            booking_obj = form.save(commit=False)
+            booking_obj.user = request.user
+
+            booking_obj.save()
+
+            return redirect('movie_list')
+        
+        context = {'form': form}
+        return render(request, 'BookingsApp/seat_booking.html', context)
