@@ -7,6 +7,8 @@ from .models import *
 
 class BookingForm(forms.ModelForm):
     # booking_date = forms.DateTimeField()
+    # only show free seats for bookings
+    seat = forms.ModelChoiceField(queryset=Seat.objects.filter(status=Seat.FREE))
 
     class Meta:
         model = Booking

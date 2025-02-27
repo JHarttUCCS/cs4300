@@ -8,6 +8,7 @@ from rest_framework import permissions
 from .models import Movie, Seat, Booking
 from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
 from .forms import *
+from .models import *
 from .views import *
 
 # Create your views here.
@@ -107,17 +108,21 @@ class SeatBookingViewID(LoginRequiredMixin, View):
         context = {'form': form}
         return render(request, 'BookingsApp/seat_booking.html', context)
 
-    def post(self, request):
+    def post(self, request, movie_id):
         form = BookingForm(request.POST)
 
         print(form.errors)
         if form.is_valid():
-            print("hi")
-
             booking_obj = form.save(commit=False)
+
+            # set user to current user in the booking object
             booking_obj.user = request.user
 
             booking_obj.save()
+            
+            # set the related seat to reserved in the booking object
+            booking_obj.seat.status = Seat.RESERVED
+            booking_obj.seat.save()
 
             return redirect('movie_list')
         
