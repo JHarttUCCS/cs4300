@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework', # don't forget to add rest_framework!
+    'bootstrap5',
     'BookingsApp',
 ]
 
