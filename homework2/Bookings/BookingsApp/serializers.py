@@ -12,7 +12,7 @@ class SeatSerializer(serializers.ModelSerializer):
         model = Seat
         fields = ['seat_num', 'status']
 
-# class MovieSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Movie
-#         fields = ['title', 'description', 'release_date', 'duration']
+class BookingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Booking
+        fields = ['movie', 'seat', 'user', 'booking_date']

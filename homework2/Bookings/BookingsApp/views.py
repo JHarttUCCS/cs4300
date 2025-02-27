@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from rest_framework import permissions
 
 from .models import Movie, Seat, Booking
-from .serializers import MovieSerializer, SeatSerializer
+from .serializers import MovieSerializer, SeatSerializer, BookingSerializer
 
 
 # Create your views here.
@@ -16,4 +16,9 @@ class MovieViewSet(viewsets.ModelViewSet):
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
+    permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+
+class BookingViewSet(viewsets.ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
