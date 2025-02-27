@@ -16,5 +16,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     
     # page urls
-    path('movie_list', views.movieList, name='movie_list')
+    path('movie_list', views.movieList, name='movie_list'),
+    path('booking_history', views.bookingHistory, name='booking_history'),
 ]

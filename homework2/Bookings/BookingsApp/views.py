@@ -32,3 +32,11 @@ def movieList(request):
     context['movies'] = movies
 
     return render(request, 'BookingsApp/movie_list.html', context)
+
+def bookingHistory(request):
+    context = {}
+
+    bookings = Booking.objects.filter(user=request.user)
+    context['bookings'] = bookings
+
+    return render(request, 'BookingsApp/booking_history.html', context)
