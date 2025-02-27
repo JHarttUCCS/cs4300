@@ -1,0 +1,22 @@
+{% extends 'BookingsApp/base.html' %}
+{% block title %}Seat Booking{% endblock %}
+
+{% block content %}
+    <form method='post' enctype="multipart/form-data">
+        {% csrf_token %}
+        <h5>Movie:</h5>
+        {{ form.movie }}
+        <br>
+        <br>
+        <h5>Seat:</h5>
+        {{ form.seat }}
+        <br>
+        <br>
+        <h5>Booking Date:</h5>
+        <p>EX: 10/25/2006 14:30</p>
+        {{ form.booking_date }}
+        <br>
+        <br>
+        <button name="submit">Submit</button>
+    </form>
+{% endblock %}

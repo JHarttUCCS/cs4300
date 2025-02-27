@@ -24,4 +24,5 @@ urlpatterns = [
     # page urls
     path('movie_list', views.movieList, name='movie_list'),
     path('booking_history', views.bookingHistory, name='booking_history'),
+    path('seat_booking', views.SeatBookingView.as_view(), name='seat_booking'),
 ]

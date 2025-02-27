@@ -1,5 +1,7 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.views import View
 from rest_framework import viewsets
 from rest_framework import permissions
 
@@ -73,3 +75,26 @@ def bookingHistory(request):
     context['bookings'] = bookings
 
     return render(request, 'BookingsApp/booking_history.html', context)
+
+class SeatBookingView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = BookingForm()
+        context = {'form': form}
+        return render(request, 'BookingsApp/seat_booking.html', context)
+
+    def post(self, request):
+        form = BookingForm(request.POST)
+
+        print(form.errors)
+        if form.is_valid():
+            print("hi")
+
+            booking_obj = form.save(commit=False)
+            booking_obj.user = request.user
+
+            booking_obj.save()
+
+            return redirect('movie_list')
+        
+        context = {'form': form}
+        return render(request, 'BookingsApp/seat_booking.html', context)
