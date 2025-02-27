@@ -1,5 +1,5 @@
 from django.contrib.auth import logout
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from rest_framework import permissions
 
@@ -29,6 +29,9 @@ class BookingViewSet(viewsets.ModelViewSet):
 def custom_logout(request):
     logout(request)
     return render(request, 'registration/logout.html')
+
+def profile_redirect(request):
+    return redirect('/movie_list')
 
 
 # page views
