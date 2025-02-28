@@ -22,6 +22,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     
     # page urls
+    path('', views.index_redirect),
     path('movie_list/', views.movieList, name='movie_list'),
     path('booking_history/', views.BookingHistoryView.as_view(), name='booking_history'),
     path('seat_booking/', views.SeatBookingView.as_view(), name='seat_booking'),

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework', # don't forget to add rest_framework!
     'bootstrap5',
     'BookingsApp',
+    'BookingsApp.tests',
 ]
 
 MIDDLEWARE = [

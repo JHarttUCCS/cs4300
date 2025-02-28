@@ -11,6 +11,7 @@ from .forms import *
 from .models import *
 from .views import *
 
+
 # Create your views here.
 # ==== Viewsets ====
 class MovieViewSet(viewsets.ModelViewSet):
@@ -18,10 +19,12 @@ class MovieViewSet(viewsets.ModelViewSet):
     serializer_class = MovieSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
 
+
 class SeatViewSet(viewsets.ModelViewSet):
     queryset = Seat.objects.all()
     serializer_class = SeatSerializer
     permission_classes = [permissions.IsAdminUser, permissions.IsAuthenticatedOrReadOnly]
+
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
@@ -34,8 +37,10 @@ def custom_logout(request):
     logout(request)
     return render(request, 'registration/logout.html')
 
+
 def profile_redirect(request):
-    return redirect('/movie_list')
+    return redirect('/movie_list/')
+
 
 def register(request):
     form = CreateUserForm()
@@ -57,6 +62,10 @@ def register(request):
 
 
 # page views
+def index_redirect(request):
+    return redirect('/movie_list/')
+
+
 def movieList(request):
     context = {}
 
@@ -64,6 +73,7 @@ def movieList(request):
     context['movies'] = movies
 
     return render(request, 'BookingsApp/movie_list.html', context)
+
 
 class BookingHistoryView(LoginRequiredMixin, View):
     def get(self, request):
@@ -77,6 +87,7 @@ class BookingHistoryView(LoginRequiredMixin, View):
         context['bookings'] = bookings
 
         return render(request, 'BookingsApp/booking_history.html', context)
+
 
 class SeatBookingView(LoginRequiredMixin, View):
     def get(self, request):
@@ -117,7 +128,6 @@ class SeatBookingViewID(LoginRequiredMixin, View):
 
             # set user to current user in the booking object
             booking_obj.user = request.user
-
             booking_obj.save()
             
             # set the related seat to reserved in the booking object
