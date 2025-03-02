@@ -33,6 +33,9 @@ class Seat(models.Model):
 
     def __str__(self):
         return self.seat_num
+
+    def get_absolute_url(self):
+        return reverse('seat-detail', args=[str(self.id)])
         
 
 class Booking(models.Model):
