@@ -14,6 +14,9 @@ homework2
 └── requirements.txt
 ```
 
+## Github Link
+[Homework 2 Github Link](https://github.com/JHarttUCCS/cs4300/tree/main/homework2)
+
 ## Setup
 1. Navigate to the `homework2/` folder
 2. Make a venv: `python -m venv myvenv`
